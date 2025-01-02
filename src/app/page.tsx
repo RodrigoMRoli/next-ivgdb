@@ -1,26 +1,19 @@
-"use client";
-
-import AlertDefault from "@/components/AlertDefault";
-
-async function fetchCatFacts() {
-    try {
-        const publicUrl = "https://catfact.ninja/fact";
-        const result = await fetch(publicUrl, {
-            cache: "no-cache",
-        });
-        if (!result.ok) {
-            throw new Error("Response was not OK");
-        }
-        const catFact = await result.json();
-        console.log(catFact);
-        return catFact.fact;
-    } catch (err) {
-        console.error(err);
-        return null;
-    }
-}
+import { fetchCatFacts } from "@/actions/fetch-cat-facts";
+import AlertDefault from "@/components/alert-default";
+import CardDefault from "@/components/card-default";
 
 export default async function Home() {
     const catFact = await fetchCatFacts();
-    return <AlertDefault title={"Cat Fact"} description={catFact} />;
+    return (
+        <CardDefault
+            cardTitle="Cat Fact"
+            cardDescription="A random cat fact..."
+            cardActionLabel="Send"
+        >
+            <AlertDefault
+                title={"Cat Fact"}
+                description={catFact}
+            ></AlertDefault>
+        </CardDefault>
+    );
 }
