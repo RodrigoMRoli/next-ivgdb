@@ -13,7 +13,7 @@ async function fetchCatFacts() {
         }
         const catFact = await result.json();
         console.log(catFact);
-        return catFact;
+        return catFact.fact;
     } catch (err) {
         console.error(err);
         return null;
@@ -22,5 +22,5 @@ async function fetchCatFacts() {
 
 export default async function Home() {
     const catFact = await fetchCatFacts();
-    return <AlertDefault title={"Cat Fact"} description={catFact.fact} />;
+    return <AlertDefault title={"Cat Fact"} description={catFact} />;
 }
