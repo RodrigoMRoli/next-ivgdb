@@ -3,22 +3,13 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { cn } from "@/lib/utils";
 import {
     NavigationMenu,
-    NavigationMenuContent,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { VariantProps } from "class-variance-authority";
-import { ThemeConfig } from "tailwindcss/types/config";
-import { DefaultColors } from "tailwindcss/types/generated/colors";
-import { ThemeToggle, ThemeToggleAlt } from "../theme-toggle";
-import DrawerMenu from "./drawer-menu";
-import { ListItem } from "./list-item-menu";
 import NavMenuItem, { NavMenuItemComponent } from "./nav-menu-item";
 import UserMenu from "./user-menu";
 import SearchBar from "./search-bar";
@@ -44,13 +35,11 @@ export default function NavMenu({ className }: NavMenuProps) {
             <NavigationMenu>
                 <NavigationMenuList className="space-x-4">
                     <NavigationMenuItem>
-                        <Link href="/">
-                            <NavigationMenuLink
-                                className={navigationMenuTriggerStyle()}
-                            >
-                                Logo
-                            </NavigationMenuLink>
-                        </Link>
+                        <NavigationMenuLink
+                            className={navigationMenuTriggerStyle()}
+                        >
+                            Logo
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavMenuItem title={"Menu"} components={endpoints} />
                     <NavigationMenuItem>
