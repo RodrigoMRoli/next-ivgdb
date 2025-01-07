@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "@/providers/Providers";
+import NavMenu from "@/components/nav-menu/nav-menu";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "IVgDB",
+    title: "IVgDb",
     description: "Internet Video Game Database",
 };
 
@@ -26,9 +27,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased flex justify-center items-center`}
+                className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased`}
             >
-                <Providers>{children}</Providers>
+                <Providers>
+                    <NavMenu className="" />
+                    {children}
+                </Providers>
             </body>
         </html>
     );

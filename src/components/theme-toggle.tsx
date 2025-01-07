@@ -1,7 +1,6 @@
 "use client";
 
-import * as React from "react";
-import { Moon, Sun } from "lucide-react";
+import { Moon, MoonIcon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -11,8 +10,12 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Switch } from "./ui/switch";
+import { Label } from "./ui/label";
+import { useEffect, useState } from "react";
+import { SwitchMoonIcon, SwitchSunIcon } from "./switch-icon";
 
-export function ModeToggle() {
+export function ThemeToggle() {
     const { setTheme } = useTheme();
 
     return (
@@ -36,5 +39,30 @@ export function ModeToggle() {
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
+    );
+}
+
+export function ThemeToggleAlt() {
+    const { theme, setTheme } = useTheme();
+    const [reverseTheme, setReverseTheme] = useState("");
+    const handleReverseTheme = (state: string) => {
+        setReverseTheme(state);
+    };
+
+    useEffect(() => {
+        const reverseThemeState = theme === "dark" ? "light" : "dark";
+        handleReverseTheme(reverseThemeState);
+    }, [theme]);
+
+    return (
+        <div className="flex items-center space-x-2">
+            <Label htmlFor="theme-mode">Theme</Label>
+            <Switch
+                className={`bg-${theme}`}
+                id="airplane-mode"
+                icon={theme === "dark" ? <SwitchMoonIcon /> : <SwitchSunIcon />}
+                onClick={() => setTheme(reverseTheme)}
+            />
+        </div>
     );
 }
