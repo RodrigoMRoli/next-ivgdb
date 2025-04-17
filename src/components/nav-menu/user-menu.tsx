@@ -2,12 +2,10 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggleAlt } from "../theme-toggle";
-import { NavigationMenuTrigger } from "../ui/navigation-menu";
 import { UserAvatar } from "../user-avatar";
 
 interface UserMenuProps {
@@ -27,7 +25,7 @@ export default function UserMenu({ className }: UserMenuProps) {
                 <DropdownMenuItem>Your Favorites</DropdownMenuItem>
                 <DropdownMenuItem>Your reviews</DropdownMenuItem>
                 <DropdownMenuItem>Your Lists</DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={(e) => e.preventDefault()}>
                     <ThemeToggleAlt />
                 </DropdownMenuItem>
                 <DropdownMenuItem>Settings</DropdownMenuItem>

@@ -1,8 +1,5 @@
 "use client";
 
-import * as React from "react";
-import Link from "next/link";
-
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -11,8 +8,8 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import NavMenuItem, { NavMenuItemComponent } from "./nav-menu-item";
-import UserMenu from "./user-menu";
 import SearchBar from "./search-bar";
+import UserMenu from "./user-menu";
 
 interface NavMenuProps {
     className?: string;

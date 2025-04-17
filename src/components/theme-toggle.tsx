@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, MoonIcon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -10,10 +10,10 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Switch } from "./ui/switch";
-import { Label } from "./ui/label";
 import { useEffect, useState } from "react";
 import { SwitchMoonIcon, SwitchSunIcon } from "./switch-icon";
+import { Label } from "./ui/label";
+import { Switch } from "./ui/switch";
 
 export function ThemeToggle() {
     const { setTheme } = useTheme();
@@ -44,15 +44,18 @@ export function ThemeToggle() {
 
 export function ThemeToggleAlt() {
     const { theme, setTheme } = useTheme();
-    const [reverseTheme, setReverseTheme] = useState("");
+    const [reverseTheme, setReverseTheme] = useState(theme ?? "dark");
     const handleReverseTheme = (state: string) => {
         setReverseTheme(state);
     };
 
     useEffect(() => {
+        if (theme === "system") {
+            setTheme("dark");
+        }
         const reverseThemeState = theme === "dark" ? "light" : "dark";
         handleReverseTheme(reverseThemeState);
-    }, [theme]);
+    }, [theme, setTheme]);
 
     return (
         <div className="flex items-center space-x-2">
